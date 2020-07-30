@@ -3,7 +3,6 @@ import './App.css';
 import 'antd/dist/antd.css'
 
 import Chat, { ChatMessage } from "./components/Chat/Chat";
-// import { SearchProps } from "antd/es/input/Search";
 
 import { Space } from 'antd'
 import { Layout } from 'antd';
@@ -13,15 +12,11 @@ import { observable, computed } from 'mobx'
 
 const { Header, Footer, Content } = Layout;
 
-// todo: move to the config
 const chatWindowsCount = 4
 
 @observer
 class App extends React.Component {
-    // todo: put in a MobX state
-    // and make it reactive
     state = {
-        //  Array <ChatMessage> =
     }
 
     @observable
