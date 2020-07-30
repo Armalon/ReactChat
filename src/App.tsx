@@ -38,7 +38,12 @@ function App() {
     }
 
     const Chats = Array.apply(null, Array(4)).map((v, k) => {
-        return <Chat entered={newMessageAddedHandler} chatMessages={chatMessages} serialNumber={k + 1} />
+        return <Chat
+            entered={newMessageAddedHandler}
+            chatMessages={chatMessages}
+            serialNumber={k + 1}
+            key={k}
+        />
     })
 
     return (
