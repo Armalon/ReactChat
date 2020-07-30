@@ -1,6 +1,9 @@
 import React from "react";
 
-import { Card, List } from 'antd'
+import { Card, List, Input } from 'antd'
+import {SearchProps} from "antd/es/input/Search";
+
+const { Search } = Input;
 
 export interface ChatMessage {
     userName: string
@@ -9,7 +12,8 @@ export interface ChatMessage {
 
 export interface Props {
     serialNumber: number
-    chatMessages: Array<ChatMessage>
+    chatMessages: Array<ChatMessage>,
+    entered: (value: string, chatNumber: number) => void
 }
 
 const Chat = (props: Props) => {
@@ -27,6 +31,10 @@ const Chat = (props: Props) => {
                     </List.Item>
                 )}
             />
+            <Search
+                placeholder="Type a message here"
+                onSearch={(val) => props.entered(val, props.serialNumber)}
+                enterButton="Send" />
         </Card>
     )
 };

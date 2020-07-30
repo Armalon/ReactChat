@@ -3,6 +3,7 @@ import './App.css';
 import 'antd/dist/antd.css'
 
 import Chat, { ChatMessage } from "./components/Chat/Chat";
+import { SearchProps } from "antd/es/input/Search";
 
 import { Space } from 'antd'
 import { Layout } from 'antd';
@@ -13,6 +14,7 @@ function App() {
     const chatWindowsCount = 4
 
     // todo: put in a MobX state
+    // and make it reactive
     const chatMessages: Array<ChatMessage> = [
         {
             userName: 'user #1',
@@ -28,8 +30,15 @@ function App() {
         },
     ]
 
+    const newMessageAddedHandler = (value: string, chatNumber: number) => {
+        chatMessages.push({
+            userName: `user #${chatNumber}`,
+            text: value
+        })
+    }
+
     const Chats = Array.apply(null, Array(4)).map((v, k) => {
-        return <Chat chatMessages={chatMessages} serialNumber={k + 1} />
+        return <Chat entered={newMessageAddedHandler} chatMessages={chatMessages} serialNumber={k + 1} />
     })
 
     return (
