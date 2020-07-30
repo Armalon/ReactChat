@@ -1,30 +1,37 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css'
 
 import Hello from "./components/Hello";
 
 import { Space, Card } from 'antd'
-import 'antd/dist/antd.css'
+import { Layout } from 'antd';
+
+const { Header, Footer, Content } = Layout;
 
 function App() {
     return (
-        <div className="App">
-            <Hello
-                name="Aleksey"
-                enthusiasmLevel={10} />
-
-            <Space direction="vertical">
-                <Card title="Chat #1" style={{ width: 500 }}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                </Card>
-                <Card title="Chat #2" style={{ width: 500 }}>
-                <p>Card content</p>
-                <p>Card content</p>
-                </Card>
-            </Space>
-        </div>
+        <Layout>
+            <Header>
+                Welcome to chats!
+            </Header>
+            <Content>
+                <Space direction="vertical" style={{ width: '100%' }}>
+                    <Card title="Chat #1">
+                        <p>Card content</p>
+                        <p>Card content</p>
+                    </Card>
+                    <Card title="Chat #2">
+                        <p>Card content</p>
+                        <p>Card content</p>
+                    </Card>
+                </Space>
+            </Content>
+            <Footer>
+                Footer here
+            </Footer>
+        </Layout>
     );
 }
 
