@@ -25,10 +25,10 @@ class App extends React.Component {
     }
 
     @observable
-    chatMessages = [
+    chatMessages: Array<ChatMessage> = [
         {
             userName: 'user #1',
-            text: 'Some message'
+            text: 'Init message'
         },
         {
             userName: 'user #3',
@@ -40,8 +40,11 @@ class App extends React.Component {
         },
     ]
 
+    @computed get chatMessagesAll():Array<ChatMessage> {
+        return [...this.chatMessages]
+    }
+
     newMessageAddedHandler = (value: string, chatNumber: number) => {
-        this.chatMessages = [...this.chatMessages]
         this.chatMessages.push({
             userName: `user #${chatNumber}`,
             text: value
@@ -61,7 +64,7 @@ class App extends React.Component {
         const Chats = Array.apply(null, Array(chatWindowsCount)).map((v, k) => {
             return <Chat
                 entered={this.newMessageAddedHandler}
-                chatMessages={this.chatMessages}
+                chatMessages={this.chatMessagesAll}
                 serialNumber={k + 1}
                 key={k}
             />
