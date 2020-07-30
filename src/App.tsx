@@ -1,17 +1,16 @@
 import React from 'react';
 import './App.css';
+
+import { Space, Layout } from 'antd'
 import 'antd/dist/antd.css'
-
-import Chat, { ChatMessage } from "./components/Chat/Chat";
-
-import { Space } from 'antd'
-import { Layout } from 'antd';
 
 import { observer } from "mobx-react"
 import { observable, computed } from 'mobx'
 
-const { Header, Footer, Content } = Layout;
+import Chat, { ChatMessage } from "./components/Chat/Chat";
 
+
+const { Header, Footer, Content } = Layout;
 const chatWindowsCount = 4
 
 @observer
