@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, List, Input } from 'antd'
+import { Card, List, Input, Form } from 'antd'
 import {SearchProps} from "antd/es/input/Search";
 
 const { Search } = Input;
@@ -17,6 +17,8 @@ export interface Props {
 }
 
 const Chat = (props: Props) => {
+    const [form] = Form.useForm();
+
     return (
         <Card title={`Chat #${props.serialNumber}`}>
             <List
@@ -31,10 +33,16 @@ const Chat = (props: Props) => {
                     </List.Item>
                 )}
             />
-            <Search
-                placeholder="Type a message here"
-                onSearch={(val) => props.entered(val, props.serialNumber)}
-                enterButton="Send" />
+
+            <Form
+                form={form}>
+                <Form.Item name="message">
+                    <Search
+                        placeholder="Type a message here"
+                        onSearch={(val) => { props.entered(val, props.serialNumber); form.resetFields() }}
+                        enterButton="Send" />
+                </Form.Item>
+            </Form>
         </Card>
     )
 };
