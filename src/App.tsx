@@ -1,16 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'antd/dist/antd.css'
 
-import Hello from "./components/Hello";
+import Chat, { ChatMessage } from "./components/Chat/Chat";
 
-import { Space, Card } from 'antd'
+import { Space } from 'antd'
 import { Layout } from 'antd';
 
 const { Header, Footer, Content } = Layout;
 
 function App() {
+    const chatWindowsCount = 4
+
+    // todo: put in a MobX state
+    const chatMessages: Array<ChatMessage> = [
+        {
+            userName: 'user #1',
+            text: 'Some message'
+        },
+        {
+            userName: 'user #3',
+            text: 'Another message'
+        },
+        {
+            userName: 'user #4',
+            text: 'Last message'
+        },
+    ]
+
+    const Chats = Array.apply(null, Array(4)).map((v, k) => {
+        return <Chat chatMessages={chatMessages} serialNumber={k + 1} />
+    })
+
     return (
         <Layout>
             <Header>
@@ -18,14 +39,7 @@ function App() {
             </Header>
             <Content>
                 <Space direction="vertical" style={{ width: '100%' }}>
-                    <Card title="Chat #1">
-                        <p>Card content</p>
-                        <p>Card content</p>
-                    </Card>
-                    <Card title="Chat #2">
-                        <p>Card content</p>
-                        <p>Card content</p>
-                    </Card>
+                    {Chats}
                 </Space>
             </Content>
             <Footer>
