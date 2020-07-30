@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Card, List, Input, Form } from 'antd'
-import {SearchProps} from "antd/es/input/Search";
+// import {SearchProps} from "antd/es/input/Search";
 
 const { Search } = Input;
 
