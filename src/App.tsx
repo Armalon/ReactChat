@@ -9,56 +9,25 @@ import { observable, computed } from 'mobx'
 
 import Chat, { ChatMessage } from "./components/Chat/Chat";
 
+import { ObservableChatMessages } from './storage'
+
+interface Props {
+    chatMessages: ObservableChatMessages
+}
 
 const { Header, Footer, Content } = Layout;
 const chatWindowsCount = 4
 
 @observer
-class App extends React.Component {
+class App extends React.Component<Props, object> {
     state = {
-    }
-
-    @observable
-    chatMessages: Array<ChatMessage> = [
-        {
-            userName: 'user #1',
-            text: 'Init message'
-        },
-        {
-            userName: 'user #3',
-            text: 'Another message'
-        },
-        {
-            userName: 'user #4',
-            text: 'Last message'
-        },
-    ]
-
-    @computed get chatMessagesAll():Array<ChatMessage> {
-        return [...this.chatMessages]
-    }
-
-    newMessageAddedHandler = (value: string, chatNumber: number) => {
-        this.chatMessages.push({
-            userName: `user #${chatNumber}`,
-            text: value
-        })
-
-        // const chatMessages = [...this.state.chatMessages]
-        // chatMessages.push({
-        //     userName: `user #${chatNumber}`,
-        //     text: value
-        // })
-        // this.setState({
-        //     chatMessages
-        // })
     }
 
     render() {
         const Chats = Array.apply(null, Array(chatWindowsCount)).map((v, k) => {
             return <Chat
-                entered={this.newMessageAddedHandler}
-                chatMessages={this.chatMessagesAll}
+                entered={this.props.chatMessages.newMessageAddedHandler}
+                chatMessages={this.props.chatMessages.chatMessagesAll}
                 serialNumber={k + 1}
                 key={k}
             />
