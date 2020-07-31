@@ -24,10 +24,12 @@ class App extends React.Component<Props, object> {
     }
 
     render() {
+        const chatMessages: ObservableChatMessages = this.props.chatMessages
+
         const Chats = Array.apply(null, Array(chatWindowsCount)).map((v, k) => {
             return <Chat
-                entered={this.props.chatMessages.newMessageAddedHandler}
-                chatMessages={this.props.chatMessages.chatMessagesAll}
+                entered={chatMessages.newMessageAddedHandler}
+                chatMessages={chatMessages.chatMessagesAll}
                 serialNumber={k + 1}
                 key={k}
             />
