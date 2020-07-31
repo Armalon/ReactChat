@@ -5,9 +5,8 @@ import { Space, Layout } from 'antd'
 import 'antd/dist/antd.css'
 
 import { observer } from "mobx-react"
-import { observable, computed } from 'mobx'
 
-import Chat, { ChatMessage } from "./components/Chat/Chat";
+import Chat from "./components/Chat/Chat";
 
 import { ObservableChatMessages } from './storage'
 
