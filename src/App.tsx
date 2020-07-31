@@ -36,7 +36,8 @@ class App extends React.Component<Props, object> {
 
         return (
             <Layout>
-                <Header title='Welcome to chats!'>
+                <Header>
+                    Welcome to chats!
                 </Header>
                 <Content>
                     <Space direction="vertical" style={{width: '100%'}}>
