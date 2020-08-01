@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 
 import { Space, Layout } from 'antd'
 import 'antd/dist/antd.css'
@@ -7,7 +6,6 @@ import 'antd/dist/antd.css'
 import { observer } from "mobx-react"
 
 import Chat from "./components/Chat/Chat";
-
 import { ObservableChatMessages } from './storage'
 
 interface Props {
@@ -19,9 +17,6 @@ const chatWindowsCount = 4
 
 @observer
 class App extends React.Component<Props, object> {
-    state = {
-    }
-
     render() {
         const chatMessages: ObservableChatMessages = this.props.chatMessages
 

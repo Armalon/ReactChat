@@ -28,15 +28,6 @@ export class ObservableChatMessages {
             userName: `user #${chatNumber}`,
             text: value
         })
-
-        // const chatMessages = [...this.state.chatMessages]
-        // chatMessages.push({
-        //     userName: `user #${chatNumber}`,
-        //     text: value
-        // })
-        // this.setState({
-        //     chatMessages
-        // })
     }
 }
 
